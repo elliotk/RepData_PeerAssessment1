@@ -54,7 +54,29 @@ median.steps <- median(total.steps$total, na.rm = TRUE)
 
 ## What is the average daily activity pattern?
 
+# Compute average number of steps per interval
+require(dplyr)
+interval.aves <- my.frame %>%
+                   group_by(interval) %>%
+                   summarise(ave.steps = mean(steps, na.rm = TRUE))
 
+# Make a time series plot of interval vs. average number of steps
+plot(ave.steps ~ interval, data = interval.aves, type = "l",
+     main = "Average number of steps taken vs. Interval",
+     xlab = "Interval", ylab = "Average number of steps taken"
+     )
+
+# Interval containing max average number of steps
+interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps), 
+              "interval"]
+# Alternatively, do:
+# subset(interval.aves, 
+           interval.aves$ave.steps == max(interval.aves$ave.steps), 
+           interval)
+#
+# -or,
+# max.interval <- which(interval.aves$ave.steps == max(interval.aves$ave.steps))
+# interval.aves[max.interval, "interval"]
 
 ## Imputing missing values
 
