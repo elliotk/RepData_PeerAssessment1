@@ -105,3 +105,55 @@ mean.steps   <- mean(total.imputed.steps$total, na.rm = TRUE)
 median.steps <- median(total.imputed.steps$total, na.rm = TRUE)
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+# Create new factor variable
+imputed.frame$day.of.week <- factor(ifelse(weekdays(imputed.frame$date) == "Saturday" |
+                                           weekdays(imputed.frame$date) == "Sunday", "weekend", "weekday"),
+                                    levels = c("weekend", "weekday"))
+
+# Alternatively do:
+# transform(imputed.frame,
+#          day.of.week <- factor(ifelse(weekdays(date) == "Saturday" |
+#                                       weekdays(date) == "Sunday", "weekend", "weekday"),
+#                                levels = c("weekend", "weekday")))
+
+# The dplyr way:
+# mutate(imputed.frame,
+#   day.of.week <- factor(ifelse(weekdays(date) == "Saturday" |
+#                                weekdays(date) == "Sunday", "weekend", "weekday"),
+#                         levels = c("weekend", "weekday"))
+# )     
+
+# Compute average number of steps per interval
+# Weekday:
+require(dplyr)
+weekday.interval.aves <- imputed.frame %>%
+                           filter(day.of.week == "weekday") %>%
+                           group_by(interval) %>%
+                           summarise(ave.steps = mean(steps, na.rm = TRUE)
+                           ) %>%
+                           mutate(day.of.week = "weekday")
+    
+# Weekend:
+require(dplyr)
+weekend.interval.aves <- imputed.frame %>%
+                           filter(day.of.week == "weekend") %>%
+                           group_by(interval) %>%
+                           summarise(ave.steps = mean(steps, na.rm = TRUE)
+                           ) %>%
+                           mutate(day.of.week = "weekend")
+
+# Merge weekday and weekend data sets
+weekday.weekend.interval.aves <- rbind(weekday.interval.aves, weekend.interval.aves)
+
+# Make a time series plot of interval vs. average number of steps for weekend and weekday
+require(lattice)
+xyplot(ave.steps ~ interval | factor(day.of.week,
+                                     levels = c("weekday", "weekend")),
+       data = weekday.weekend.interval.aves,
+       type = "l",
+       layout = c(1, 2),
+       main = "Weekend & Weekday average number of steps taken vs. Interval",
+       xlab = "Interval",
+       ylab = "Average number of steps taken"
+       )
