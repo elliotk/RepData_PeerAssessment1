@@ -5,8 +5,9 @@ output:
     keep_md: true
 ---
 
-
 ## Loading and preprocessing the data
+
+```{r loading and preprocessing the data, echo = TRUE}
 # Set data dir
 data.directory <- "./data"
 
@@ -30,6 +31,7 @@ my.frame <- read.csv(file = csv.data.file,
                      stringsAsFactors = FALSE, 
                      colClasses = c("integer", "Date", "integer")
             )
+```
 
 ## What is mean total number of steps taken per day?
 # Compute total steps by day
