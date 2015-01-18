@@ -54,7 +54,10 @@ hist(total.steps$total,
 
 # Compute mean and median total number of steps by day
 mean.steps   <- mean(total.steps$total, na.rm = TRUE)
+mean.steps
+
 median.steps <- median(total.steps$total, na.rm = TRUE)
+median.steps
 ```
 
 ## What is the average daily activity pattern?
