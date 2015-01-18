@@ -7,7 +7,7 @@ output:
 
 ## Loading and preprocessing the data
 
-```{r loading and preprocessing the data, echo = TRUE}
+```{r loading-and-preprocessing-the-data, echo = TRUE}
 # Set data dir
 data.directory <- "./data"
 
