@@ -76,8 +76,8 @@ plot(ave.steps ~ interval, data = interval.aves, type = "l",
      )
 
 # Interval containing max average number of steps
-interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps), 
-              "interval"]
+interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps), "interval"]
+
 # Alternatively, do:
 # subset(interval.aves, 
 #           interval.aves$ave.steps == max(interval.aves$ave.steps), 
