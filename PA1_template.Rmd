@@ -115,6 +115,7 @@ median.steps <- median(total.imputed.steps$total, na.rm = TRUE)
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+```{r weekday-weekend-activity-pattern-differences, echo = TRUE}
 # Create new factor variable
 imputed.frame$day.of.week <- factor(ifelse(weekdays(imputed.frame$date) == "Saturday" |
                                            weekdays(imputed.frame$date) == "Sunday", "weekend", "weekday"),
@@ -166,3 +167,4 @@ xyplot(ave.steps ~ interval | factor(day.of.week,
        xlab = "Interval",
        ylab = "Average number of steps taken"
        )
+```
