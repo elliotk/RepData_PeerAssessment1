@@ -25,6 +25,12 @@ csv.file.name <- "activity.csv"
 # Set path/to/csv data file 
 csv.data.file <- file.path(data.directory, csv.file.name)
 
+# Read csv data file
+my.frame <- read.csv(file = csv.data.file, 
+                     stringsAsFactors = FALSE, 
+                     colClasses = c("integer", "Date", "integer")
+            )
+
 ## What is mean total number of steps taken per day?
 
 
