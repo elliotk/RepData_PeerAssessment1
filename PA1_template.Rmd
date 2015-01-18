@@ -34,6 +34,8 @@ my.frame <- read.csv(file = csv.data.file,
 ```
 
 ## What is mean total number of steps taken per day?
+
+```{r mean-total-number-steps-taken, echo = TRUE}
 # Compute total steps by day
 require(dplyr)
 total.steps <- summarise(group_by(my.frame, date), 
@@ -53,6 +55,7 @@ hist(total.steps$total,
 # Compute mean and median total number of steps by day
 mean.steps   <- mean(total.steps$total, na.rm = TRUE)
 median.steps <- median(total.steps$total, na.rm = TRUE)
+```
 
 ## What is the average daily activity pattern?
 
