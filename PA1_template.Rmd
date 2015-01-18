@@ -59,6 +59,7 @@ median.steps <- median(total.steps$total, na.rm = TRUE)
 
 ## What is the average daily activity pattern?
 
+```{r average-daily-activity-pattern, echo = TRUE}
 # Compute average number of steps per interval
 require(dplyr)
 interval.aves <- my.frame %>%
@@ -82,6 +83,7 @@ interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps),
 # -or,
 # max.interval <- which(interval.aves$ave.steps == max(interval.aves$ave.steps))
 # interval.aves[max.interval, "interval"]
+```
 
 ## Imputing missing values
 
