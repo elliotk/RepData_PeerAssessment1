@@ -77,8 +77,8 @@ interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps),
               "interval"]
 # Alternatively, do:
 # subset(interval.aves, 
-           interval.aves$ave.steps == max(interval.aves$ave.steps), 
-           interval)
+#           interval.aves$ave.steps == max(interval.aves$ave.steps), 
+#           interval)
 #
 # -or,
 # max.interval <- which(interval.aves$ave.steps == max(interval.aves$ave.steps))
