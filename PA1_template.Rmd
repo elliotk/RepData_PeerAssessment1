@@ -7,8 +7,23 @@ output:
 
 
 ## Loading and preprocessing the data
+# Set data dir
+data.directory <- "./data"
 
+# Set zip archive data file name
+archive.file.name <- "activity.zip"
 
+# Set path/to/zip archive data file 
+archive.data.file <- file.path(data.directory, archive.file.name)
+
+# Extract zip archive data file
+unzip(archive.data.file, exdir = data.directory)
+
+# Set csv data file name
+csv.file.name <- "activity.csv"
+
+# Set path/to/csv data file 
+csv.data.file <- file.path(data.directory, csv.file.name)
 
 ## What is mean total number of steps taken per day?
 
