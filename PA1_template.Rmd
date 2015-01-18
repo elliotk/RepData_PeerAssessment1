@@ -115,7 +115,10 @@ hist(total.imputed.steps$total,
 
 # Compute mean and median total number of steps by day
 mean.steps   <- mean(total.imputed.steps$total, na.rm = TRUE)
+mean.steps
+
 median.steps <- median(total.imputed.steps$total, na.rm = TRUE)
+median.steps
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
