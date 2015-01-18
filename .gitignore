@@ -1,0 +1,7 @@
+# Ignore history
+.Rhistory
+
+# Ignore vim/emacs swap and backup files
+.*.sw*
+*~
+*.Rmd~
