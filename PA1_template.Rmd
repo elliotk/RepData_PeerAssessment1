@@ -106,7 +106,9 @@ total.imputed.steps <- summarise(group_by(imputed.frame, date),
                                  total = sum(steps, na.rm = TRUE))
 
 # Make a histogram of total steps by day
-hist(total.imputed.steps$total)
+hist(total.imputed.steps$total,
+     main = "Imputed total steps taken per day", 
+     xlab = "Total steps taken")
 
 # Compute mean and median total number of steps by day
 mean.steps   <- mean(total.imputed.steps$total, na.rm = TRUE)
