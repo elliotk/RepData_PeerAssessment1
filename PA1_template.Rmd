@@ -80,6 +80,28 @@ interval.aves[interval.aves$ave.steps == max(interval.aves$ave.steps),
 
 ## Imputing missing values
 
+# Compute total number of rows equal to NA
+sum(is.na(my.frame$steps))
 
+# Set interval NAs to mean number of steps for that interval
+require(dplyr)
+imputed.frame <- my.frame %>%
+                   group_by(interval) %>%
+                   mutate(steps = ifelse(is.na(steps), 
+                                    mean(steps, na.rm = TRUE), 
+                                    steps)
+                   )
+
+# Compute total steps by day
+require(dplyr)
+total.imputed.steps <- summarise(group_by(imputed.frame, date), 
+                                 total = sum(steps, na.rm = TRUE))
+
+# Make a histogram of total steps by day
+hist(total.imputed.steps$total)
+
+# Compute mean and median total number of steps by day
+mean.steps   <- mean(total.imputed.steps$total, na.rm = TRUE)
+median.steps <- median(total.imputed.steps$total, na.rm = TRUE)
 
 ## Are there differences in activity patterns between weekdays and weekends?
